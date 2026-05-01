@@ -1,0 +1,23 @@
+<snippet>
+	<content><![CDATA[public function edit(\$ids = null)
+{
+    if (\$this->request->isPost()) {
+        \$params = \$this->request->post("row/a");
+        if (\$params) {
+            \$result = \$this->model->save(\$params, ['id' => \$ids]);
+            if (\$result !== false) {
+                \$this->success();
+            } else {
+                \$this->error('更新失败');
+            }
+        }
+        \$this->error('参数错误');
+    }
+    \$row = \$this->model->find(\$ids);
+    \$this->view->assign('row', \$row);
+    return \$this->view->fetch();
+}]]></content>
+	<scope>source.php</scope>
+	<tabTrigger>faedit</tabTrigger>
+	<description>FastAdmin 编辑方法</description>
+</snippet>

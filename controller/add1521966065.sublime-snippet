@@ -1,0 +1,21 @@
+<snippet>
+	<content><![CDATA[public function add()
+{
+    if (\$this->request->isPost()) {
+        \$params = \$this->request->post("row/a");
+        if (\$params) {
+            \$result = \$this->model->save(\$params);
+            if (\$result !== false) {
+                \$this->success();
+            } else {
+                \$this->error('保存失败');
+            }
+        }
+        \$this->error('参数错误');
+    }
+    return \$this->view->fetch();
+}]]></content>
+	<scope>source.php</scope>
+	<tabTrigger>faadd</tabTrigger>
+	<description>FastAdmin 添加方法</description>
+</snippet>
