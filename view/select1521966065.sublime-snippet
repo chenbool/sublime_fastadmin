@@ -1,0 +1,9 @@
+<snippet>
+	<content><![CDATA[<select id="c-status" name="row[status]" class="form-control selectpicker">
+    <option value="normal" {eq name="row.status" value="normal"}selected{/eq}>{:__('Normal')}</option>
+    <option value="hidden" {eq name="row.status" value="hidden"}selected{/eq}>{:__('Hidden')}</option>
+</select>]]></content>
+	<scope>text.html</scope>
+	<tabTrigger>fasel</tabTrigger>
+	<description>FastAdmin 下拉选择</description>
+</snippet>

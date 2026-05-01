@@ -1,0 +1,10 @@
+<snippet>
+	<content><![CDATA[\db('${1:user}')->insert([
+    '${2:username}' => '${3:admin}',
+    '${4:password}' => '${5:password}',
+    '${6:createtime}' => time(),
+]);]]></content>
+	<scope>source.php</scope>
+	<tabTrigger>fainsert</tabTrigger>
+	<description>FastAdmin Db插入</description>
+</snippet>

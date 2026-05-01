@@ -1,0 +1,45 @@
+<snippet>
+	<content><![CDATA[define(['jquery', 'bootstrap', 'backend', 'table', 'form', 'dialog'], function ($, undefined, Backend, Table, Form, Dialog) {
+    var Controller = {
+        index: function () {
+            Table.api.init({
+                extend: {
+                    index_url: '${1:user/index}',
+                    add_url: '${2:user/add}',
+                    edit_url: '${3:user/edit}',
+                    del_url: '${4:user/del}',
+                    multi_url: '${5:user/multi}',
+                    table: '${6:user}',
+                }
+            });
+            var table = $("#table");
+            table.bootstrapTable({
+                url: $.fn.bootstrapTable.defaults.extend.index_url,
+                pk: 'id',
+                sortName: 'id',
+                columns: [
+                    [
+                        {checkbox: true},
+                        {field: 'id', title: __('Id')},
+                        {field: '${7:username}', title: __('Username')},
+                        {field: '${8:nickname}', title: __('Nickname')},
+                        {field: 'operate', title: __('Operate'), table: table, events: Table.api.events.operate, formatter: Table.api.formatter.operate}
+                    ]
+                ]
+            });
+            Table.api.bindevent(table);
+        },
+        api: {
+            formatter: {
+                status: function (value, row, index) {
+                    return value == 'normal' ? '<span class="label label-success">' + __('Normal') + '</span>' : '<span class="label label-danger">' + __('Hidden') + '</span>';
+                }
+            }
+        }
+    };
+    return Controller;
+});]]></content>
+<parameter name="scope">source.js</scope>
+	<tabTrigger>fajsadv</tabTrigger>
+	<description>FastAdmin JS高级控制器</description>
+</snippet>

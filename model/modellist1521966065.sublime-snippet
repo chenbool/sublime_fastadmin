@@ -1,0 +1,20 @@
+<snippet>
+	<content><![CDATA[<?php
+
+namespace app\admin\model;
+
+use think\Model;
+
+class ${1:User} extends Model
+{
+    protected \$name = '${2:user}';
+    
+    public function getStatusList()
+    {
+        return ['normal' => __('Normal'), 'hidden' => __('Hidden')];
+    }
+}]]></content>
+	<scope>source.php</scope>
+	<tabTrigger>famodellist</tabTrigger>
+	<description>FastAdmin 模型列表</description>
+</snippet>

@@ -1,0 +1,36 @@
+<snippet>
+	<content><![CDATA[<?php
+
+namespace app\admin\controller;
+
+use app\common\controller\Backend;
+
+class ${1:Category} extends Backend
+{
+    protected \$model = null;
+    
+    public function _initialize()
+    {
+        parent::_initialize();
+        \$this->model = new \app\admin\model\${2:Category};
+    }
+    
+    public function index()
+    {
+        if (\$this->request->isAjax()) {
+            list(\$where, \$sort, \$order, \$offset, \$limit) = \$this->buildparams();
+            \$list = \$this->model
+                ->where(\$where)
+                ->order(\$sort, \$order)
+                ->limit(\$offset, \$limit)
+                ->select();
+            \$result = ['total' => count(\$list), 'rows' => \$list];
+            return json(\$result);
+        }
+        return \$this->view->fetch();
+    }
+}]]></content>
+	<scope>source.php</scope>
+	<tabTrigger>facontrollertree</tabTrigger>
+	<description>FastAdmin 树形控制器</description>
+</snippet>

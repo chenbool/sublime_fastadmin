@@ -1,0 +1,11 @@
+<snippet>
+	<content><![CDATA[<?php
+
+use app\common\library\Token;
+
+\$token = Token::get('${1:token}');
+\$user = Token::getUser(\$token);]]></content>
+	<scope>source.php</scope>
+	<tabTrigger>fatokenlib</tabTrigger>
+	<description>FastAdmin Token库</description>
+</snippet>

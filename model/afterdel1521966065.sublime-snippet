@@ -1,0 +1,8 @@
+<snippet>
+	<content><![CDATA[public function after_delete(\$row) {
+    \db('${1:category}')->where('${2:parent_id}', \$row['${3:id}'])->delete();
+}]]></content>
+	<scope>source.php</scope>
+	<tabTrigger>faafterdel</tabTrigger>
+	<description>FastAdmin 删除后回调</description>
+</snippet>

@@ -1,0 +1,25 @@
+<snippet>
+	<content><![CDATA[<?php
+
+namespace app\admin\model;
+
+use think\Model;
+
+class ${1:Category} extends Model
+{
+    protected \$name = '${2:category}';
+    
+    public function parent()
+    {
+        return \$this->belongsTo(self::class, '${3:parent_id}');
+    }
+    
+    public function children()
+    {
+        return \$this->hasMany(self::class, '${4:parent_id}');
+    }
+}]]></content>
+	<scope>source.php</scope>
+	<tabTrigger>famodeltree</tabTrigger>
+	<description>FastAdmin 树形模型</description>
+</snippet>

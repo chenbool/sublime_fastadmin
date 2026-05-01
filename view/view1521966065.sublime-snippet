@@ -1,0 +1,42 @@
+<snippet>
+	<content><![CDATA[<div class="panel panel-default panel-intro">
+    <div class="panel-heading">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#tab1" data-toggle="tab">{:__('Basic info')}</a></li>
+        </ul>
+    </div>
+    <div class="panel-body">
+        <div id="myTabContent" class="tab-content">
+            <div class="tab-pane fade active in" id="tab1">
+                <div class="widget-body">
+                    <form id="edit-form" class="form-horizontal" method="POST">
+                        <input type="hidden" name="row[id]" value="{$row.id|default=''}" />
+                        <div class="form-group">
+                            <label class="control-label col-xs-12 col-sm-2">{:__('${1:Username}')}:</label>
+                            <div class="col-xs-12 col-sm-8">
+                                <input id="c-username" name="row[username]" class="form-control" type="text" value="{$row.username|default=''}" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-xs-12 col-sm-2">{:__('${2:Nickname}')}:</label>
+                            <div class="col-xs-12 col-sm-8">
+                                <input id="c-nickname" name="row[nickname]" class="form-control" type="text" value="{$row.nickname|default=''}" />
+                            </div>
+                        </div>
+                        <div class="form-group layer-footer">
+                            <label class="control-label col-xs-12 col-sm-2"></label>
+                            <div class="col-xs-12 col-sm-8">
+                                <button type="submit" class="btn btn-success btn-embossed">{:__('Submit')}</button>
+                                <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>]]></content>
+<parameter name="scope">text.html</scope>
+<parameter name="tabTrigger>faview</parameter>
+<description>FastAdmin 视图模板</description>
+</snippet>

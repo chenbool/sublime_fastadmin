@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[{:__('${1:Username}')}]]></content>
+	<scope>source.php</scope>
+<parameter name="tabTrigger>falang</tabTrigger>
+	<description>FastAdmin 语言包</description>
+</snippet>

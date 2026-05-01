@@ -1,0 +1,8 @@
+<snippet>
+	<content><![CDATA[\db('${1:user}')->where('id', ${2:\$id})->update([
+    '${3:nickname}' => '${4:nickname}',
+]);]]></content>
+	<scope>source.php</scope>
+	<tabTrigger>faupdate</tabTrigger>
+	<description>FastAdmin Db更新</description>
+</snippet>

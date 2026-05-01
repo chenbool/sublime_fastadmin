@@ -1,0 +1,27 @@
+<snippet>
+	<content><![CDATA[<?php
+
+namespace app\admin\validate;
+
+use think\Validate;
+
+class ${1:User}Validate extends Validate
+{
+    protected \$rule = [
+        '${2:username}' => 'require|max:50|alphaNum',
+        '${3:nickname}' => 'require|max:50',
+        '${4:password}' => 'require|min:6',
+        '${5:email}' => 'require|email',
+        '${6:mobile}' => 'require|mobile',
+    ];
+
+    protected \$message = [
+        '${7:username.require}' => '${8:用户名不能为空}',
+        '${9:username.max}' => '${10:用户名最多50个字符}',
+        '${11:username.alphaNum}' => '${12:用户名只能是字母和数字}',
+    ];
+}]]></content>
+<scope>source.php</scope>
+	<tabTrigger>favalidate</tabTrigger>
+	<description>FastAdmin 验证器</description>
+</snippet>

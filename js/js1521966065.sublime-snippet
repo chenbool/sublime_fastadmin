@@ -1,0 +1,59 @@
+<snippet>
+	<content><![CDATA[define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefined, Backend, Table, Form) {
+    var Controller = {
+        index: function () {
+            Table.api.init({
+                extend: {
+                    index_url: '${1:user/index}',
+                    add_url: '${2:user/add}',
+                    edit_url: '${3:user/edit}',
+                    del_url: '${4:user/del}',
+                    multi_url: '${5:user/multi}',
+                    table: '${6:user}',
+                }
+            });
+            var table = $("#table");
+            table.bootstrapTable({
+                url: $.fn.bootstrapTable.defaults.extend.index_url,
+                pk: 'id',
+                sortName: 'id',
+                columns: [
+                    [
+                        {checkbox: true},
+                        {field: 'id', title: __('Id')},
+                        {field: '${7:username}', title: __('Username')},
+                        {field: '${8:nickname}', title: __('Nickname')},
+                        {field: 'email', title: __('Email')},
+                        {field: 'mobile', title: __('Mobile')},
+                        {field: 'status', title: __('Status'), search: {"type": "select", data: [{"id": "normal", "name": "Normal"}, {"id": "hidden", "name": "Hidden"}]}, formatter: Table.api.formatter.status},
+                        {field: 'create_time', title: __('Create_time'), formatter: Table.api.formatter.datetime},
+                        {
+                            field: 'operate',
+                            title: __('Operate'),
+                            table: table,
+                            events: Table.api.events.operate,
+                            formatter: Table.api.formatter.operate
+                        }
+                    ]
+                ]
+            });
+            Table.api.bindevent(table);
+        },
+        add: function () {
+            Controller.api.bindevent();
+        },
+        edit: function () {
+            Controller.api.bindevent();
+        },
+        api: {
+            bindevent: function () {
+                Form.api.bindevent($("form[role=form]"));
+            }
+        }
+    };
+    return Controller;
+});]]></content>
+<scope>source.js</scope>
+	<tabTrigger>fajs</tabTrigger>
+	<description>FastAdmin JS控制器</description>
+</snippet>

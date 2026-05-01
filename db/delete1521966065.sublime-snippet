@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[\db('${1:user}')->where('id', 'in', ${2:\$ids})->delete();]]></content>
+	<scope>source.php</scope>
+	<tabTrigger>fadelete</tabTrigger>
+	<description>FastAdmin Db删除</description>
+</snippet>

@@ -1,0 +1,11 @@
+<snippet>
+	<content><![CDATA[<div class="form-group">
+    <label class="control-label col-xs-12 col-sm-2">{$1:Username}:</label>
+    <div class="col-xs-12 col-sm-8">
+        <input id="c-username" name="row[username]" class="form-control" type="text" value="{$row.username|default=''}" />
+    </div>
+</div>]]></content>
+	<scope>text.html</scope>
+	<tabTrigger>faform</tabTrigger>
+	<description>FastAdmin 表单字段</description>
+</snippet>

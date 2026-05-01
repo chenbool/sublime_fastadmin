@@ -1,0 +1,95 @@
+<snippet>
+	<content><![CDATA[<?php
+
+namespace app\admin\controller;
+
+use app\common\controller\Backend;
+
+class ${1:User} extends Backend
+{
+    protected \$model = null;
+    protected \$searchFields = '${2:username,nickname}';
+
+    public function _initialize()
+    {
+        parent::_initialize();
+        \$this->model = new \app\admin\model\${3:User};
+    }
+
+    public function index()
+    {
+        if (\$this->request->isAjax()) {
+            list(\$where, \$sort, \$order, \$offset, \$limit) = \$this->buildparams();
+            \$total = \$this->model
+                ->where(\$where)
+                ->order(\$sort, \$order)
+                ->count();
+            \$list = \$this->model
+                ->where(\$where)
+                ->order(\$sort, \$order)
+                ->limit(\$offset, \$limit)
+                ->select();
+            \$result = ['total' => \$total, 'rows' => \$list];
+            return json(\$result);
+        }
+        return \$this->view->fetch();
+    }
+
+    public function add()
+    {
+        if (\$this->request->isPost()) {
+            \$params = \$this->request->post('row/a');
+            if (\$params) {
+                \$result = \$this->model->save(\$params);
+                if (\$result) {
+                    \$this->success();
+                } else {
+                    \$this->error();
+                }
+            }
+            \$this->error('${4:参数错误}');
+        }
+        return \$this->view->fetch();
+    }
+
+    public function edit(\$ids = null)
+    {
+        \$row = \$this->model->get(\$ids);
+        if (!\$row) {
+            \$this->error('${5:记录未找到}');
+        }
+        if (\$this->request->isPost()) {
+            \$params = \$this->request->post('row/a');
+            if (\$params) {
+                \$result = \$row->save(\$params);
+                if (\$result !== false) {
+                    \$this->success();
+                } else {
+                    \$this->error('${6:保存失败}');
+                }
+            }
+            \$this->error('${7:参数错误}');
+        }
+        \$this->view->assign('row', \$row);
+        return \$this->view->fetch();
+    }
+
+    public function del(\$ids = '')
+    {
+        if (\$ids) {
+            \$pk = \$this->model->getPk();
+            \$list = \$this->model->where(\$pk, 'in', \$ids)->select();
+            if (\$list) {
+                \$result = \$list->delete();
+                if (\$result) {
+                    \$this->success();
+                }
+            }
+        }
+        \$this->error('${8:删除失败}');
+    }
+}]]></content>
+	<scope>source.php</scope>
+	<tabTrigger>facontroller</tabTrigger>
+	<description>FastAdmin 控制器</description>
+</snippet>

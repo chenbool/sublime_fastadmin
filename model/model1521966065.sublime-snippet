@@ -1,0 +1,28 @@
+<snippet>
+	<content><![CDATA[<?php
+
+namespace app\admin\model;
+
+use think\Model;
+
+class ${1:User} extends Model
+{
+    protected \$name = '${2:user}';
+    protected \$auto = [];
+    protected \$insert = ['${3:create_time}'];
+    protected \$update = ['${4:update_time}'];
+
+    protected function setCreateTimeAttr(\$value)
+    {
+        return \$value ?: time();
+    }
+
+    protected function setUpdateTimeAttr(\$value)
+    {
+        return \$value ?: time();
+    }
+}]]></content>
+	<scope>source.php</scope>
+	<tabTrigger>famodel</tabTrigger>
+	<description>FastAdmin 模型</description>
+</snippet>

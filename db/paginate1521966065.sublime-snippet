@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[\db('${1:user}')->where('${2:username}', 'like', '%${3:keyword}%')->paginate(\$limit, false, ['page' => \$page]);]]></content>
+	<scope>source.php</scope>
+	<tabTrigger>fapaginate</tabTrigger>
+	<description>FastAdmin Db分页</description>
+</snippet>

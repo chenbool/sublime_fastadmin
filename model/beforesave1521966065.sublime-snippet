@@ -1,0 +1,10 @@
+<snippet>
+	<content><![CDATA[public function before_save(&\$row) {
+    if (!isset(\$row['${1:createtime}'])) {
+        \$row['${2:createtime}'] = time();
+    }
+}]]></content>
+	<scope>source.php</scope>
+	<tabTrigger>fabeforesave</tabTrigger>
+	<description>FastAdmin 保存前回调</description>
+</snippet>
